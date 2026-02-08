@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Results (keep figures/metrics, but ignore large artifacts)
+results/models/
+*.pt
+*.ckpt
+
+# Data cache (HuggingFace datasets/cache)
+data/
+.cache/
+**/.cache/
+**/datasets/
+**/huggingface/
+# Exclude large model files
+results/baseline/best_model.pt
+results/transformer/checkpoint-*/
