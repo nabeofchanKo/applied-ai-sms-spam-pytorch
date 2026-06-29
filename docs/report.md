@@ -352,6 +352,6 @@ This project successfully demonstrated:
 
 ---
 
-**Report Generated**: Based on experimental results from notebooks/01_setup_and_data.ipynb and notebooks/02_transformer_finetuning.ipynb
+**Report Generated**: Based on the metrics in `results/baseline/test_metrics.json` and `results/transformer/test_metrics.json`, produced by the CLI pipeline (`src/train_baseline.py`, `src/train_transformer.py`, `src/eval.py`) with SEED=42. The notebooks under `notebooks/` are for development and exploration and are not the source of these figures.
 
 **Author**: Applied AI SMS Spam Classification Project
