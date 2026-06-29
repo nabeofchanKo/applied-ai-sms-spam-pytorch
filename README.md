@@ -13,8 +13,8 @@ This project implements and compares two neural approaches for SMS spam classifi
 The goal is to demonstrate how model architecture choices affect performance, error patterns, and robustness in short-text classification tasks.
 
 **Key Results:**
-- BiLSTM: **98.2% accuracy**, **93.2% F1 score**
-- DistilBERT: **98.6% accuracy**, **94.6% F1 score**
+- BiLSTM: **98.4% accuracy**, **94.0% F1 score**
+- DistilBERT: **98.6% accuracy**, **94.5% F1 score**
 
 ---
 
@@ -51,8 +51,7 @@ applied-ai-sms-spam-pytorch/
 │   ├── config.py                 # Configuration and hyperparameters
 │   ├── data.py                   # Data loading and preprocessing
 │   ├── models/
-│   │   ├── baseline_lstm.py      # BiLSTM model architecture
-│   │   └── transformer.py        # Transformer configuration
+│   │   └── baseline_lstm.py      # BiLSTM model architecture
 │   ├── train_baseline.py         # Baseline training script
 │   ├── train_transformer.py      # Transformer training script
 │   ├── eval.py                   # Evaluation script
@@ -89,7 +88,7 @@ applied-ai-sms-spam-pytorch/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/applied-ai-sms-spam-pytorch.git
+git clone https://github.com/nabeofchanko/applied-ai-sms-spam-pytorch.git
 cd applied-ai-sms-spam-pytorch
 ```
 
@@ -192,10 +191,10 @@ python -m src.visualize --model-type transformer \
 
 | Metric | Baseline BiLSTM | DistilBERT | Improvement |
 |--------|-----------------|------------|-------------|
-| **Accuracy** | 98.21% | 98.57% | +0.36% |
-| **Precision** | 95.77% | 95.89% | +0.12% |
-| **Recall** | 90.67% | 93.33% | +2.66% |
-| **F1 Score** | 93.15% | 94.59% | +1.44% |
+| **Accuracy** | 98.39% | 98.57% | +0.18% |
+| **Precision** | 94.59% | 97.18% | +2.59% |
+| **Recall** | 93.33% | 92.00% | -1.33% |
+| **F1 Score** | 93.96% | 94.52% | +0.56% |
 
 ### Confusion Matrices
 
@@ -203,22 +202,22 @@ python -m src.visualize --model-type transformer \
 ```
               Predicted
               Ham   Spam
-Actual  Ham   480    3
-        Spam    7   68
+Actual  Ham   479    4
+        Spam    5   70
 ```
 
 **DistilBERT:**
 ```
               Predicted
               Ham   Spam
-Actual  Ham   480    3
-        Spam    5   70
+Actual  Ham   481    2
+        Spam    6   69
 ```
 
 ### Key Insights
 
 - ✅ **Both models achieve excellent performance** (>98% accuracy)
-- ✅ **Transformer reduces false negatives** (7 → 5) while maintaining low false positives
+- ✅ **Transformer trades recall for precision**: false positives drop (4 → 2) while false negatives rise slightly (5 → 6)
 - ✅ **BiLSTM is lightweight and fast** (~1.2M parameters vs. 66M)
 - ✅ **Trade-off**: Accuracy vs. model size/inference speed
 
@@ -292,7 +291,7 @@ If you use this code in your research, please cite:
   title={SMS Spam Classification with BiLSTM and Transformer},
   author={Applied AI SMS Spam Classification Project},
   year={2026},
-  url={https://github.com/yourusername/applied-ai-sms-spam-pytorch}
+  url={https://github.com/nabeofchanko/applied-ai-sms-spam-pytorch}
 }
 ```
 

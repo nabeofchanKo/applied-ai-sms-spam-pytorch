@@ -7,9 +7,9 @@ This project implements and compares two neural approaches for SMS spam classifi
 2. **Transformer Model**: DistilBERT fine-tuned using HuggingFace Transformers
 
 **Key Results:**
-- Baseline BiLSTM achieved **98.2% accuracy** and **93.2% F1 score** on test set
-- DistilBERT achieved **98.6% accuracy** and **94.6% F1 score** on test set
-- Transformer model significantly reduced false positives while maintaining high recall
+- Baseline BiLSTM achieved **98.4% accuracy** and **94.0% F1 score** on test set
+- DistilBERT achieved **98.6% accuracy** and **94.5% F1 score** on test set
+- DistilBERT improved precision by reducing false positives (4 → 2), at the cost of a slight drop in recall (one additional false negative: 5 → 6)
 
 ---
 
@@ -152,31 +152,31 @@ Output (Logits)
 
 | Metric | Baseline BiLSTM | DistilBERT | Improvement |
 |--------|-----------------|------------|-------------|
-| **Accuracy** | 98.21% | 98.57% | +0.36% |
-| **Precision** | 95.77% | 95.89% | +0.12% |
-| **Recall** | 90.67% | 93.33% | +2.66% |
-| **F1 Score** | 93.15% | 94.59% | +1.44% |
-| **Loss** | 0.0494 | 0.0696 | - |
+| **Accuracy** | 98.39% | 98.57% | +0.18% |
+| **Precision** | 94.59% | 97.18% | +2.59% |
+| **Recall** | 93.33% | 92.00% | -1.33% |
+| **F1 Score** | 93.96% | 94.52% | +0.56% |
+| **Loss** | 0.1070 | N/A | - |
 
 **Confusion Matrix - Baseline BiLSTM:**
 ```
               Predicted
               Ham   Spam
-Actual  Ham   480    3
-        Spam    7   68
+Actual  Ham   479    4
+        Spam    5   70
 ```
-- False Positives (Ham→Spam): 3
-- False Negatives (Spam→Ham): 7
+- False Positives (Ham→Spam): 4
+- False Negatives (Spam→Ham): 5
 
 **Confusion Matrix - DistilBERT:**
 ```
               Predicted
               Ham   Spam
-Actual  Ham   480    3
-        Spam    5   70
+Actual  Ham   481    2
+        Spam    6   69
 ```
-- False Positives (Ham→Spam): 3
-- False Negatives (Spam→Ham): 5
+- False Positives (Ham→Spam): 2
+- False Negatives (Spam→Ham): 6
 
 ### 5.2 Training Dynamics
 
@@ -233,21 +233,21 @@ Actual  Ham   480    3
 
 ### 6.2 DistilBERT Errors
 
-**False Positives (Reduced from 3 to 3 - same as baseline):**
+**False Positives (Reduced from 4 to 2):**
 1. *"Message:some text missing* Sender:Name Missing* *Number Missing *Sent:Date missing *Missing U a lot thats y everything is missing sent via fullonsms.com"*
    - **Why**: URL presence, unusual format
 
 2. *"MY NO. IN LUTON 0125698789 RING ME IF UR AROUND! H*"*
    - **Why**: Same as baseline - all caps, phone number
 
-**False Negatives (Reduced from 7 to 5):**
-- Transformer correctly identified 2 additional spam messages
+**False Negatives (Increased from 5 to 6):**
+- Compared to the baseline, DistilBERT missed one additional spam message
 - Remaining errors are ambiguous cases where even human annotators might disagree
 
-**Improvement**: DistilBERT better understands:
-- Contextual nuances in informal language
-- Intent behind conversational spam
-- Difference between legitimate urgency vs. spam urgency
+**Trade-off**: DistilBERT is more conservative about flagging messages as spam:
+- Fewer false positives (4 → 2): legitimate messages are less often misclassified
+- One more false negative (5 → 6): a borderline spam message slips through
+- Net effect: higher precision (94.59% → 97.18%) at the cost of slightly lower recall (93.33% → 92.00%)
 
 ---
 
@@ -264,7 +264,7 @@ Actual  Ham   480    3
 
 | Aspect | BiLSTM | DistilBERT |
 |--------|--------|------------|
-| **Performance** | Good (93.2% F1) | Better (94.6% F1) |
+| **Performance** | Good (94.0% F1) | Better (94.5% F1) |
 | **Training Time** | Faster | Slower |
 | **Inference Speed** | Faster | Slower |
 | **Model Size** | Tiny (1.2M) | Large (66M) |
@@ -320,7 +320,7 @@ Actual  Ham   480    3
 ## 9. Conclusion
 
 This project successfully demonstrated:
-1. **Strong baseline performance** (98.2% accuracy) with a lightweight BiLSTM model
+1. **Strong baseline performance** (98.4% accuracy) with a lightweight BiLSTM model
 2. **Improved performance** (98.6% accuracy) with transformer fine-tuning
 3. **Practical insights** on model selection trade-offs for production deployment
 
