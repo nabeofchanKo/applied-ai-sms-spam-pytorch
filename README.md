@@ -1,5 +1,7 @@
 # SMS Spam Classification with Baseline NN and Transformer (PyTorch)
 
+*NTU MSc Applied AI · CA6000 Applied AI Programming · individual final project*
+
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -34,12 +36,12 @@ The goal is to demonstrate how model architecture choices affect performance, er
 
 ## Features
 
-✅ **Two Model Architectures**: BiLSTM baseline and DistilBERT transformer
-✅ **Modular Code**: Clean separation of data, models, training, and evaluation
-✅ **CLI Support**: Train and evaluate models from command line
-✅ **Comprehensive Tests**: Unit tests for data loading and models
-✅ **Detailed Documentation**: Technical report and references
-✅ **Reproducible**: Fixed random seeds and version-controlled dependencies
+- **Two Model Architectures**: BiLSTM baseline and DistilBERT transformer
+- **Modular Code**: Clean separation of data, models, training, and evaluation
+- **CLI Support**: Train and evaluate models from command line
+- **Comprehensive Tests**: Unit tests for data loading and models
+- **Detailed Documentation**: Technical report and references
+- **Reproducible**: Fixed random seeds and version-controlled dependencies
 
 ---
 
@@ -88,7 +90,7 @@ applied-ai-sms-spam-pytorch/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/nabeofchanko/applied-ai-sms-spam-pytorch.git
+git clone https://github.com/nabeofchanKo/applied-ai-sms-spam-pytorch.git
 cd applied-ai-sms-spam-pytorch
 ```
 
@@ -218,10 +220,10 @@ Actual  Ham   481    2
 
 ### Key Insights
 
-- ✅ **Both models achieve excellent performance** (>98% accuracy)
-- ✅ **Transformer trades recall for precision**: false positives drop (4 → 2) while false negatives rise slightly (5 → 6)
-- ✅ **BiLSTM is lightweight and fast** (~1.2M parameters vs. 66M)
-- ✅ **Trade-off**: Accuracy vs. model size/inference speed
+- **Both models achieve excellent performance** (>98% accuracy)
+- **Transformer trades recall for precision**: false positives drop (4 → 2) while false negatives rise slightly (5 → 6)
+- **BiLSTM is lightweight and fast** (~1.2M parameters vs. 66M)
+- **Trade-off**: Accuracy vs. model size/inference speed
 
 For detailed analysis, see [docs/report.md](docs/report.md).
 
@@ -284,29 +286,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@misc{sms-spam-classification,
-  title={SMS Spam Classification with BiLSTM and Transformer},
-  author={Applied AI SMS Spam Classification Project},
-  year={2026},
-  url={https://github.com/nabeofchanko/applied-ai-sms-spam-pytorch}
-}
-```
-
----
-
 ## Acknowledgments
 
 - **SMS Spam Collection**: Almeida, T.A. & Hidalgo, J.M.G.
 - **HuggingFace**: For transformers and datasets libraries
 - **PyTorch**: For deep learning framework
-
----
-
-## Contact
-
-For questions or feedback, please open an issue on GitHub.
