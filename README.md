@@ -2,6 +2,14 @@
 
 *NTU MSc Applied AI · CA6000 Applied AI Programming · individual final project*
 
+> **概要**: SMS のスパム判定を題材に、PyTorch で一から組んだ BiLSTM と、事前学習済み Transformer（DistilBERT）のファインチューニングを同じ条件で比較したプロジェクトです。正解率はほぼ同じ（98.4% vs 98.6%）でした。DistilBERT は誤検知（正常な SMS をスパムと判定）を 4 件→2 件に減らした一方、見逃しは 1 件増えました。パラメータ数は約 55 倍（1.2M vs 66M）です。シンガポール南洋理工大学（NTU）修士課程の授業の個人最終課題です。
+
+### 作り方
+
+**きっかけ**: 授業の最終課題はテーマ自由だった。Transformer は RNN 系の古典的なニューラルネットの完全な上位互換なのかを確かめたく、精度だけでなく誤り方やモデルの大きさまで含めて比べることにした。題材には、誤検知（正常な SMS を止める）と見逃し（スパムを通す）でコストが違い、評価の観点を立てやすい SMS スパム判定を選んだ。
+
+**役割分担**: 課題設定（何と何を、どの観点で比較するか）は作者が行った。設計（モデル構成、データ分割、評価指標の選び方）と評価（結果の読み方、誤り分析の観点）は AI（ChatGPT / Claude）との壁打ちで検討し、採否は作者が判断した。実装と文書の下書きには AI コーディング支援（ChatGPT / Claude）を使い、どの結果を結論として採るかは作者が決めた。
+
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-orange.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
